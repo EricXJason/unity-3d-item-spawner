@@ -25,16 +25,22 @@ public class ItemDropdownUI : MonoBehaviour
 
     private void Awake()
     {
+#if UNITY_EDITOR
+        if (dropdownButton == null)
+        {
+            Debug.LogWarning("[ItemDropdownUI] dropdownButton 尚未在 Inspector 指派！", this);
+        }
+
+        if (contentPanel == null)
+        {
+            Debug.LogWarning("[ItemDropdownUI] contentPanel 尚未在 Inspector 指派！", this);
+        }
+#endif
+
         if (dropdownButton != null)
         {
             dropdownButton.onClick.AddListener(Toggle);
         }
-#if UNITY_EDITOR
-        else
-        {
-            Debug.LogWarning("[ItemDropdownUI] dropdownButton 尚未在 Inspector 指派！", this);
-        }
-#endif
 
         if (contentPanel != null)
         {
@@ -44,12 +50,6 @@ public class ItemDropdownUI : MonoBehaviour
                 contentCanvasGroup = contentPanel.gameObject.AddComponent<CanvasGroup>();
             }
         }
-#if UNITY_EDITOR
-        else
-        {
-            Debug.LogWarning("[ItemDropdownUI] contentPanel 尚未在 Inspector 指派！", this);
-        }
-#endif
 
         if (contentCanvasGroup != null)
         {
