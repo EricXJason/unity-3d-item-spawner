@@ -8,30 +8,48 @@ using UnityEngine.UI;
 /// </summary>
 public class ItemDropdownUI : MonoBehaviour
 {
-    [Header("UI References")] [SerializeField]
-    private TextMeshProUGUI headerText;
+    private const string HeaderExpandedText = "Items ▲";
+    private const string HeaderCollapsedText = "Items ▼";
 
+    [Header("UI References")]
+    [SerializeField] private TextMeshProUGUI headerText;
     [SerializeField] private Transform contentPanel;
     [SerializeField] private Button dropdownButton;
 
+    [Header("Dropdown Settings")]
+    [SerializeField] private float duration = 0.3f;
 
-    [Header("Settings")] [SerializeField] private float duration = 0.3f;
-
+    // Runtime References
     private CanvasGroup contentCanvasGroup;
-
     private bool isOpen;
 
     private void Awake()
     {
-        if (dropdownButton != null) dropdownButton.onClick.AddListener(Toggle);
-
+        if (dropdownButton != null)
+        {
+            dropdownButton.onClick.AddListener(Toggle);
+        }
+#if UNITY_EDITOR
+        else
+        {
+            Debug.LogWarning("[ItemDropdownUI] dropdownButton 尚未在 Inspector 指派！", this);
+        }
+#endif
 
         if (contentPanel != null)
         {
             contentPanel.localScale = new Vector3(1f, 0f, 1f);
-            contentCanvasGroup = contentPanel.GetComponent<CanvasGroup>();
-            if (contentCanvasGroup == null) contentCanvasGroup = contentPanel.gameObject.AddComponent<CanvasGroup>();
+            if (!contentPanel.TryGetComponent<CanvasGroup>(out contentCanvasGroup))
+            {
+                contentCanvasGroup = contentPanel.gameObject.AddComponent<CanvasGroup>();
+            }
         }
+#if UNITY_EDITOR
+        else
+        {
+            Debug.LogWarning("[ItemDropdownUI] contentPanel 尚未在 Inspector 指派！", this);
+        }
+#endif
 
         if (contentCanvasGroup != null)
         {
@@ -46,7 +64,6 @@ public class ItemDropdownUI : MonoBehaviour
         if (contentPanel != null) contentPanel.DOKill();
         if (contentCanvasGroup != null) contentCanvasGroup.DOKill();
     }
-
 
     private void Toggle()
     {
@@ -64,7 +81,7 @@ public class ItemDropdownUI : MonoBehaviour
             contentPanel.DOScaleY(1f, duration).SetEase(Ease.OutCubic);
             contentCanvasGroup.DOFade(1f, duration);
 
-            if (headerText != null) headerText.text = "Items ▲";
+            if (headerText != null) headerText.text = HeaderExpandedText;
         }
         else
         {
@@ -73,7 +90,7 @@ public class ItemDropdownUI : MonoBehaviour
             contentPanel.DOScaleY(0f, duration).SetEase(Ease.InCubic);
             contentCanvasGroup.DOFade(0f, duration);
 
-            if (headerText != null) headerText.text = "Items ▼";
+            if (headerText != null) headerText.text = HeaderCollapsedText;
         }
     }
 }
