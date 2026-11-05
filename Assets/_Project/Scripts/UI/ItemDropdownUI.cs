@@ -1,6 +1,7 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 /// <summary>
@@ -17,7 +18,8 @@ public class ItemDropdownUI : MonoBehaviour
     [SerializeField] private Button dropdownButton;
 
     [Header("Dropdown Settings")]
-    [SerializeField] private float duration = 0.3f;
+    [FormerlySerializedAs("duration")]
+    [SerializeField] private float animationDuration = 0.3f;
 
     // Runtime References
     private CanvasGroup contentCanvasGroup;
@@ -78,8 +80,8 @@ public class ItemDropdownUI : MonoBehaviour
         {
             contentCanvasGroup.blocksRaycasts = true;
 
-            contentPanel.DOScaleY(1f, duration).SetEase(Ease.OutCubic);
-            contentCanvasGroup.DOFade(1f, duration);
+            contentPanel.DOScaleY(1f, animationDuration).SetEase(Ease.OutCubic);
+            contentCanvasGroup.DOFade(1f, animationDuration);
 
             if (headerText != null) headerText.text = HeaderExpandedText;
         }
@@ -87,8 +89,8 @@ public class ItemDropdownUI : MonoBehaviour
         {
             contentCanvasGroup.blocksRaycasts = false;
 
-            contentPanel.DOScaleY(0f, duration).SetEase(Ease.InCubic);
-            contentCanvasGroup.DOFade(0f, duration);
+            contentPanel.DOScaleY(0f, animationDuration).SetEase(Ease.InCubic);
+            contentCanvasGroup.DOFade(0f, animationDuration);
 
             if (headerText != null) headerText.text = HeaderCollapsedText;
         }

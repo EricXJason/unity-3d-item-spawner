@@ -1,6 +1,7 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 /// <summary>
@@ -17,7 +18,8 @@ public class ItemContextMenuUI : MonoBehaviour
 
     [Header("Menu Settings")]
     [SerializeField] private Vector2 screenOffset = new Vector2(25f, 20f);
-    [SerializeField] private float fadeDuration = 0.15f;
+    [FormerlySerializedAs("fadeDuration")]
+    [SerializeField] private float animationDuration = 0.15f;
 
     // Runtime References
     private Camera mainCamera;
@@ -100,7 +102,7 @@ public class ItemContextMenuUI : MonoBehaviour
             canvasGroup.DOKill();
             canvasGroup.blocksRaycasts = true;
             canvasGroup.interactable = true;
-            canvasGroup.DOFade(1f, fadeDuration);
+            canvasGroup.DOFade(1f, animationDuration);
         }
     }
 
@@ -113,7 +115,7 @@ public class ItemContextMenuUI : MonoBehaviour
             canvasGroup.DOKill();
             canvasGroup.blocksRaycasts = false;
             canvasGroup.interactable = false;
-            canvasGroup.DOFade(0f, fadeDuration);
+            canvasGroup.DOFade(0f, animationDuration);
         }
     }
 
