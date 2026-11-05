@@ -58,6 +58,8 @@ public class PlacementManager : MonoBehaviour
             guideLine.positionCount = 2;
             guideLine.startWidth = guideLineWidth;
             guideLine.endWidth = guideLineWidth;
+            guideLine.startColor = guideLineColor;
+            guideLine.endColor = guideLineColor;
             guideLine.enabled = false;
         }
     }
@@ -122,10 +124,6 @@ public class PlacementManager : MonoBehaviour
 
             Vector3 lineTopPosition = previewPosition + upwardDirection * guideLineLength;
             guideLine.enabled = true;
-            guideLine.startWidth = guideLineWidth;
-            guideLine.endWidth = guideLineWidth;
-            guideLine.startColor = guideLineColor;
-            guideLine.endColor = guideLineColor;
             guideLine.SetPosition(0, lineTopPosition);
             guideLine.SetPosition(1, previewPosition);
         }
