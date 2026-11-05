@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 /// </summary>
 [RequireComponent(typeof(LineRenderer))]
 public class PlacementManager : MonoBehaviour
-{    
+{
     public static PlacementManager Instance { get; private set; }
 
     [Header("Raycast Settings")]
@@ -21,7 +21,7 @@ public class PlacementManager : MonoBehaviour
     [SerializeField] private float guideLineWidth = 0.2f;
     [SerializeField] private float guideLineLength = 6f;
     [SerializeField] private Color guideLineColor = Color.blue;
-    
+
     // Runtime References
     private Camera mainCamera;
     private LineRenderer guideLine;
@@ -47,7 +47,7 @@ public class PlacementManager : MonoBehaviour
         {
             Debug.LogError("[PlacementManager] 場景中找不到標記為 MainCamera 的相機！", this);
         }
-        
+
 #if UNITY_EDITOR
         if (groundLayer.value == 0)
         {
@@ -73,11 +73,11 @@ public class PlacementManager : MonoBehaviour
             Instance = null;
         }
     }
-    
+
     public void StartDragging(PlacedItem placedItem, PointerEventData eventData)
     {
         if (placedItem == null) return;
-        
+
         if (ItemContextMenuUI.Instance != null)
         {
             ItemContextMenuUI.Instance.Hide();
@@ -85,7 +85,7 @@ public class PlacementManager : MonoBehaviour
 
         if (previewPlacedItem != null)
         {
-            ResetPlacement();   
+            ResetPlacement();
         }
 
         currentPlacedItem = placedItem;
@@ -96,10 +96,10 @@ public class PlacementManager : MonoBehaviour
         {
             previewCollider.enabled = false;
         }
-            
+
         UpdateDragging(eventData);
     }
-    
+
     public void UpdateDragging(PointerEventData eventData)
     {
         if (previewPlacedItem == null || eventData == null || mainCamera == null) return;
@@ -118,8 +118,8 @@ public class PlacementManager : MonoBehaviour
             finalHitPoint = raycastHit.point;
             finalHitNormal = raycastHit.normal;
 
-            Quaternion targetRotation = alignToNormal 
-                ? Quaternion.FromToRotation(Vector3.up, raycastHit.normal) 
+            Quaternion targetRotation = alignToNormal
+                ? Quaternion.FromToRotation(Vector3.up, raycastHit.normal)
                 : Quaternion.identity;
 
             Vector3 upwardDirection = alignToNormal ? raycastHit.normal : Vector3.up;
@@ -148,8 +148,8 @@ public class PlacementManager : MonoBehaviour
         {
             Vector3 upwardDirection = alignToNormal ? finalHitNormal : Vector3.up;
             Vector3 spawnPosition = finalHitPoint + upwardDirection * currentItemHalfHeight;
-            Quaternion spawnRotation = alignToNormal 
-                ? Quaternion.FromToRotation(Vector3.up, finalHitNormal) 
+            Quaternion spawnRotation = alignToNormal
+                ? Quaternion.FromToRotation(Vector3.up, finalHitNormal)
                 : Quaternion.identity;
 
             Instantiate(currentPlacedItem, spawnPosition, spawnRotation, transform);
