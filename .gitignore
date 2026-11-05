@@ -13,3 +13,23 @@
 *.sln
 *.suo
 .DS_Store
+
+# Builds / packages
+*.apk
+*.aab
+*.app
+*.unitypackage
+
+# Logs / crash reports
+*.log
+sysinfo.txt
+crashlytics-build.properties
+
+# Editors / IDE
+.vscode/
+*.pidb
+*.booproj
+*.svd
+
+# OS
+Thumbs.db
