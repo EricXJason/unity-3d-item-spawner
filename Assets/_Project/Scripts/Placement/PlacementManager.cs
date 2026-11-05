@@ -12,12 +12,14 @@ public class PlacementManager : MonoBehaviour
     [Header("Raycast Settings")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float maxRaycastDistance = 100f;
+
+    [Header("Placement Settings")]
     [SerializeField] private bool alignToNormal = true;
+    [SerializeField] private float previewFloatHeight = 0.3f;
 
     [Header("Guide Line Settings")]
     [SerializeField] private float guideLineWidth = 0.2f;
     [SerializeField] private float guideLineLength = 6f;
-    [SerializeField] private float previewFloatHeight = 0.3f;
     [SerializeField] private Color guideLineColor = Color.blue;
     
     // Runtime References
