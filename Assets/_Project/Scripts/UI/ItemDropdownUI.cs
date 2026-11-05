@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 /// <summary>
-///     右側道具下拉選單：採代碼監聽、DOTween 縮放與透明度漸變控制
+///     右側道具下拉選單，負責展開與收合的縮放及透明度動畫
 /// </summary>
 public class ItemDropdownUI : MonoBehaviour
 {
