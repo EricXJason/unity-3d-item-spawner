@@ -82,7 +82,7 @@ public class PlacementManager : MonoBehaviour
         currentPlacedItem = placedItem;
         currentItemHalfHeight = placedItem.HalfHeight;
 
-        previewPlacedItem = Instantiate(placedItem);
+        previewPlacedItem = Instantiate(placedItem, transform);
         if (previewPlacedItem.TryGetComponent<Collider>(out var previewCollider))
         {
             previewCollider.enabled = false;
@@ -147,7 +147,7 @@ public class PlacementManager : MonoBehaviour
                 ? Quaternion.FromToRotation(Vector3.up, finalHitNormal) 
                 : Quaternion.identity;
 
-            Instantiate(currentPlacedItem, spawnPosition, spawnRotation);
+            Instantiate(currentPlacedItem, spawnPosition, spawnRotation, transform);
         }
 
         ResetPlacement();
