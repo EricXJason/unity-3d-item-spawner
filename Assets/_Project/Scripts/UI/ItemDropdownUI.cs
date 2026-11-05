@@ -71,6 +71,11 @@ public class ItemDropdownUI : MonoBehaviour
     {
         if (contentPanel == null || contentCanvasGroup == null) return;
 
+        if (ItemContextMenuUI.Instance != null)
+        {
+            ItemContextMenuUI.Instance.Hide();
+        }
+
         isOpen = !isOpen;
 
         contentPanel.DOKill();

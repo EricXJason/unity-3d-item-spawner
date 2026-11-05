@@ -78,6 +78,11 @@ public class PlacementManager : MonoBehaviour
     {
         if (placedItem == null) return;
         
+        if (ItemContextMenuUI.Instance != null)
+        {
+            ItemContextMenuUI.Instance.Hide();
+        }
+
         if (previewPlacedItem != null)
         {
             ResetPlacement();   
