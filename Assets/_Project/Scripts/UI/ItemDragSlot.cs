@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 /// <summary>
-///     處理道具欄位 UI 元素的拖曳事件，將游標事件轉發給 PlacementManager。
+///     處理道具欄位 UI 元素的拖曳事件，將游標事件轉發給 PlacementManager
 /// </summary>
 public class ItemDragSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {

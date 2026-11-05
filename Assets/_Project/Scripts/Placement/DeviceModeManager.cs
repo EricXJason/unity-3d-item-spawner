@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.XR;
 
 /// <summary>
-///     管理桌面端與延展實境模式切換，支援執行期自動偵測與手動切換空間畫布。
+///     管理桌面端與延展實境模式切換，支援執行期自動偵測與手動切換空間畫布
 /// </summary>
 public class DeviceModeManager : MonoBehaviour
 {

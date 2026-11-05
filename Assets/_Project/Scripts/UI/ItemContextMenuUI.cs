@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 /// <summary>
-///     管理場景道具互動選單 UI，包含螢幕座標追蹤、資訊顯示與刪除按鈕事件。
+///     管理場景道具互動選單 UI，包含螢幕座標追蹤、資訊顯示與刪除按鈕事件
 /// </summary>
 [RequireComponent(typeof(CanvasGroup))]
 public class ItemContextMenuUI : MonoBehaviour

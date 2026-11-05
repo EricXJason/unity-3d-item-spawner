@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 /// <summary>
-///     管理 3D 空間射線檢測、預覽物追蹤、落點垂直指引線繪製以及道具實體生成。
+///     管理 3D 空間射線檢測、預覽物追蹤、落點垂直指引線繪製以及道具實體生成
 /// </summary>
 [RequireComponent(typeof(LineRenderer))]
 public class PlacementManager : MonoBehaviour

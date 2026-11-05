@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 /// <summary>
-///     檢測滑鼠在場景中的點擊射線，控制選取 3D 道具時彈出互動選單，或點選空白與地面時關閉選單。
+///     檢測滑鼠在場景中的點擊射線，控制選取 3D 道具時彈出互動選單，或點選空白與地面時關閉選單
 /// </summary>
 public class ItemSelectionManager : MonoBehaviour
 {
