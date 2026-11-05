@@ -1274,7 +1274,7 @@ GameObject:
   - component: {fileID: 1023239478}
   - component: {fileID: 1023239477}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 'Label_Delete '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2674,10 +2674,10 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1724860396}
-  - {fileID: 1351053620}
-  - {fileID: 683679663}
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 170273964}
+  - {fileID: 1351053620}
+  - {fileID: 1724860396}
+  - {fileID: 683679663}
